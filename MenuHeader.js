@@ -1,8 +1,9 @@
-import {Body, Button, Container, Header, Icon, Left, Right, Title} from "native-base";
+import {Body, Button, Header, Icon, Input, Item, Left, Right} from "native-base";
 import {withNavigation} from 'react-navigation'
 import React, {Component} from "react";
+import {StyleSheet,TouchableOpacity} from "react-native";
 
-class Cheader extends Component {
+class MenuHeader extends Component {
 
     toggleDrawer = () => {
 
@@ -14,26 +15,50 @@ class Cheader extends Component {
         const {navigate} = this.props.navigation;
         return (
 
-            <Container>
-                <Header noShadow>
+
+                <Header noShadow style={{backgroundColor:'#01b8aa'}}>
                     <Left>
                         <Button transparent onPress={this.toggleDrawer.bind(this)}>
                             <Icon name="menu" style={{fontSize: 38}}/>
-
                         </Button>
                     </Left>
                     <Body style={{position: 'absolute', textAlign: 'center'}}>
-                        <Title style={{fontSize: 28, fontFamily: 'Roboto'}}>{this.props.title}</Title>
+
+                        <Item  style={{width:280,height:35, borderColor: 'transparent' }}>
+                            <Input placeholderTextColor="white" placeholder='   Rechercher une ville...' style={styles.villeInput}  />
+
+                        </Item>
+
+
                     </Body>
                     <Right>
+                        <TouchableOpacity >
                         <Button transparent onPress={() => navigate("Profil")}>
                             <Icon name="person" style={{fontSize: 38}}/>
                         </Button>
+                    </TouchableOpacity>
                     </Right>
                 </Header>
-            </Container>
+
         );
     }
 }
 
-export default withNavigation(Cheader);
+const styles = StyleSheet.create({
+
+    villeInput:{
+        color: "#fff",
+        fontFamily:'roboto',
+        fontSize:19,borderWidth:2,
+        borderColor:'white',
+        borderRadius:20,
+        height:45
+    }
+
+
+});
+
+
+
+
+export default withNavigation(MenuHeader);
