@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container,Header} from "native-base";
+import {Container,Header,Text} from "native-base";
 
 
 export default class Menu extends Component {
@@ -7,7 +7,9 @@ export default class Menu extends Component {
     render() {
         return (
             <Container>
+                <Text >
 
+                </Text>
             </Container>
         );
     }

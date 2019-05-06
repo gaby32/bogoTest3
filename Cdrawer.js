@@ -1,18 +1,19 @@
 import React from "react";
-import {StyleSheet,Image} from 'react-native';
-import {Body, Container, Content, Header,Text} from "native-base";
+import {Image, StyleSheet} from 'react-native';
+import {Body, Button, Container, Content, Header, Text} from "native-base";
 import {DrawerItems} from 'react-navigation'
 
 export const Cdrawer = (props) => (
 
     <Container>
         <Header style={styles.drawerHeader}>
-            <Body>
+            <Body style={{alignContent:'center', flexDirection:'row', margin:10}}>
+                <Button transparent onPress={() => this.props.navigation.navigate("Profil")}>
                 <Image
                     style={styles.drawerImage}
                     source={require('./assets/img/monkeytiti.png')} />
-                    <Text style={{ paddingLeft:52,textAlignVertical:'center'}}>Bienvenue Gabriel Bellemare</Text>
-
+                    <Text style={{fontSize:17,fontFamily:'roboto',marginLeft:20,color:'#fff',fontWeight:'bold'}}>Gabriel Bellemare</Text>
+                </Button>
             </Body>
         </Header>
         <Content>
@@ -26,7 +27,7 @@ export const Cdrawer = (props) => (
 const styles = StyleSheet.create({
 
     container: {
-
+        flex:1
 
     },
     drawerHeader: {
@@ -36,12 +37,13 @@ const styles = StyleSheet.create({
 
 
 
+
     },
     drawerImage: {
 
         height: 30,
-        width: 30,
-        borderRadius: 5
+        width: 40,
+
     }
 
 });

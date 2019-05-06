@@ -3,9 +3,9 @@ import Menu from "./screens/Menu";
 import Profil from "./screens/Profil";
 import Report from "./screens/Report";
 import React from "react";
-import { Navigation } from 'react-native-navigation';
+import {Navigation} from 'react-native-navigation';
 import MenuHeader from "./MenuHeader";
-import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
+import {gestureHandlerRootHOC} from 'react-native-gesture-handler'
 import {Cdrawer} from "./Cdrawer";
 import BackHeader from "./BackHeader";
 
@@ -65,6 +65,9 @@ const ReportStack = createStackNavigator({
 },
 
     );
+
+
+
 
 
 const DrawerNavigator = createDrawerNavigator({
