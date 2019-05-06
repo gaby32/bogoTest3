@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
-import {Container,View} from "native-base";
+import React from "react";
+import {View} from 'react-native';
+import {Container,} from "native-base";
 
 
-export default class Profil extends Component {
+export default class Profil extends React.Component {
 
     render() {
         return (
@@ -13,27 +14,27 @@ export default class Profil extends Component {
                     {/* Flex box -> En haut a gauche + en dessous */}
                     <View style={{flex: 1, flexDirection: 'column'}}>
                         {/* Flex box -> En haut */}
-                        <View style={{width: '100%', height: '50%', backgroundColor: 'steelblue'}} />
+                        <View style={{width: '100%', height: '50%', backgroundColor: 'steelblue'}}/>
                         {/* Flex box -> En bas */}
-                        <View style={{width: '100%', height: '50%', backgroundColor: 'skyblue'}} />
+                        <View style={{width: '100%', height: '50%', backgroundColor: 'skyblue'}}/>
                     </View>
 
 
                     {/* Flex box -> A droite des deux precedentes */}
-                    <View style={{width: '50%', height: '100%', backgroundColor: 'powderblue'}} />
+                    <View style={{width: '50%', height: '100%', backgroundColor: 'powderblue'}}/>
 
                 </View>
 
                 {/* Flex box -> Les deux box du bas */}
                 <View style={{flex: 1, flexDirection: 'column', justifyContent: 'flex-end'}}>
                     {/* Flex box -> En haut */}
-                    <View style={{width: '100%', height: '50%', backgroundColor: 'steelblue'}} />
+                    <View style={{width: '100%', height: '50%', backgroundColor: 'steelblue'}}/>
                     {/* Flex box -> En bas */}
-                    <View style={{width: '100%', height: '50%', backgroundColor: 'skyblue'}} />
+                    <View style={{width: '100%', height: '50%', backgroundColor: 'skyblue'}}/>
                 </View>
 
             </Container>
+
         );
     }
 }
-

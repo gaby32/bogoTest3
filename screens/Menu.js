@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container} from "native-base";
+import {Container,Header} from "native-base";
 
 
 export default class Menu extends Component {
