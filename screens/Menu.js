@@ -6,7 +6,7 @@ export default class Menu extends Component {
 
     render() {
         return (
-            <Container>
+            <Container  style={{backgroundColor: 'powderblue'}}>
 
             </Container>
         );
