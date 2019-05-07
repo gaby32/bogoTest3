@@ -45,3 +45,20 @@ export const getAllInfo = (tableInput) => {
         });
 
 };
+
+export const  getEvent = () => {
+
+    return axios.get(`http://bogoville.xyz/rest/evenement`, {
+            auth: {
+                username: user,
+                password: pass
+            }
+        },
+    )
+        .then( (res) =>
+            res.data
+        )
+        .catch(function (error) {
+            console.log(error);
+        });
+};

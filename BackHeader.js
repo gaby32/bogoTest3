@@ -20,7 +20,7 @@ class BackHeader extends Component {
                 </Left>
                 <Body style={{position: 'absolute', textAlign: 'center'}}>
 
-                    <Title style={{fontSize:responsiveFontSize(3),fontFamily:'roboto'}}>
+                    <Title style={{fontSize:responsiveFontSize(3),fontFamily:'roboto', textAlign: 'center',justifyContent: 'center'}}>
                         {this.props.title}
                     </Title>
 
