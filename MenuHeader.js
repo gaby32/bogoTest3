@@ -2,10 +2,48 @@ import {Body, Button, Header, Icon, Input, Item, Left, Right, Text,View} from "n
 import {withNavigation} from 'react-navigation'
 import React, {Component} from "react";
 import {StyleSheet, TouchableHighlight} from "react-native";
-import {getCity} from "./FetchDemo";
-import Menu from "./screens/Menu"
+import {getCity} from "./AxiosRequest";
+import Menu from "./screens/Menu";
+
 
 class MenuHeader extends Component {
+
+
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            ville: '',
+            error: false,
+
+        };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    handleChange(e) {
+        this.setState({
+            ville: e.nativeEvent.text
+        });
+    }
+    handleSubmit() {
+        getCity(this.state.ville) .then((res) => {
+            if(res === 'Not Found') {
+                this.setState({
+                    error: 'ville inconnu'
+                });
+            }
+            else {
+                this.props.navigation.navigate('Menu',{
+                villeNom: res.nom
+                });
+                this.setState({
+                    error: false,
+                    ville: ''
+                })
+            }
+        });
+    }
+
 
 
     toggleDrawer = () => {
@@ -13,6 +51,9 @@ class MenuHeader extends Component {
         this.props.navigationProps.toggleDrawer();
 
     };
+
+
+
 
     render() {
 
@@ -32,17 +73,17 @@ class MenuHeader extends Component {
                 <View style={{textAlign: 'center',justifyContent: 'center'}}>
                     <Item style={{width: '50%', height: '30%', borderColor: 'transparent'}}>
                         <Input placeholderTextColor="white" placeholder='   Rechercher une ville...'
-                               style={styles.villeInput} />
-
+                               style={styles.villeInput}  onChange={this.handleChange} />
+                        <TouchableHighlight onPress = {this.handleSubmit}>
+                        <Icon active name='swap' />
+                        </TouchableHighlight>
                     </Item>
+                </View>
 
-                    <TouchableHighlight>
 
 
-                        <Text>
-                            SEARCH
-                        </Text>
-                    </TouchableHighlight>
+
+
                 </Body>
                 <Right>
 
