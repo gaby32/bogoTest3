@@ -2,6 +2,8 @@ import {Body, Button, Header, Icon, Left, Right, Title} from "native-base";
 import {withNavigation} from 'react-navigation'
 import React, {Component} from "react";
 import {StyleSheet,Image} from 'react-native';
+import { responsiveHeight, responsiveWidth, responsiveFontSize } from './Responsivator'
+
 class BackHeader extends Component {
 
 
@@ -18,7 +20,7 @@ class BackHeader extends Component {
                 </Left>
                 <Body style={{position: 'absolute', textAlign: 'center'}}>
 
-                    <Title style={{fontSize:30,fontFamily:'roboto'}}>
+                    <Title style={{fontSize:responsiveFontSize(3),fontFamily:'roboto'}}>
                         {this.props.title}
                     </Title>
 

@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import {Container, Input, Text, View} from "native-base";
-import {StyleSheet, TouchableHighlight} from 'react-native';
-import axios from "axios";
+import {Container,Header,Text} from "native-base";
 
 var user = 'admin';
 var pass = 'admin';
@@ -55,63 +53,36 @@ export default class Menu extends Component {
     render() {
         return (
             <Container>
+                    <View style={{
+                        width: '100%',
+                        height: '100%',
+                        justifyContent: 'center',
+                        alignItems: 'center'
 
-                <View style={styles.main}>
-                    <Input
-                        style={styles.searchInput}
-                          onChange={this.handleChange}
-                    />
-                    <TouchableHighlight
-                        style={styles.button}
-                        underlayColor="red"
-                          onPress = {this.handleSubmit}
-                    >
-                        <Text
-                            style={styles.buttonText}>
-                            SEARCH
-                        </Text>
-                    </TouchableHighlight>
-
-                    <Text>
-                        {this.state.villeDone}
-                    </Text>
-                </View>
-
+                     }}>
+                        <Card>
+                            <CardImage
+                                source={require('./shawi.jpg')}
+                                isDark={true}
+                            />
+                            <CardTitle
+                                title=""
+                                subtitle="Ville de Shawinigan"
+                            />
+                            <CardContent text="Shawinigan, la ou les reves meurent!" />
+                            <CardAction
+                                separator={false}
+                                inColumn={false}>
+                                <CardButton
+                                    onPress={() => {}}
+                                    title="Next"
+                                    color="blue"
+                                />
+                            </CardAction>
+                        </Card>
+                    </View>
             </Container>
         );
     }
 }
-const styles = StyleSheet.create({
-    main: {
-        flex: 1,
-        padding: 30,
-        marginTop: 65,
-        flexDirection: 'row',
 
-
-    },
-
-    searchInput: {
-        padding: 4,
-        marginRight: 5,
-        fontSize: 23,
-        borderWidth: 1,
-        borderColor: 'black',
-        borderRadius: 8,
-        color: 'black'
-    },
-    buttonText: {
-        fontSize: 18,
-        color: '#111',
-    },
-    button: {
-        height: 45,
-        flexDirection: 'row',
-        backgroundColor: 'white',
-        borderColor: 'black',
-        borderWidth: 1,
-        borderRadius: 8,
-        marginBottom: 10,
-        marginTop: 10,
-    }
-});

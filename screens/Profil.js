@@ -24,6 +24,8 @@ export default class Profil extends React.Component {
                         <Image
                             style={styles.profileimg}
                             source={require('./fatguy.jpg')}
+                            height='100%'
+                            width='30%'
                         />
 
                     </View>

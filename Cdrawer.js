@@ -1,7 +1,9 @@
 import React from "react";
-import {Image, StyleSheet} from 'react-native';
+import {View, Image, StyleSheet} from 'react-native';
 import {Body, Button, Container, Content, Header, Text} from "native-base";
 import {DrawerItems} from 'react-navigation'
+
+let user_name = "Pickle"
 
 export const Cdrawer = (props) => (
 
@@ -12,14 +14,13 @@ export const Cdrawer = (props) => (
                 <Image
                     style={styles.drawerImage}
                     source={require('./assets/img/monkeytiti.png')} />
-                    <Text style={{fontSize:17,fontFamily:'roboto',marginLeft:20,color:'#fff',fontWeight:'bold'}}>Gabriel Bellemare</Text>
+                    <Text style={{fontSize:17,fontFamily:'roboto',marginLeft:20,color:'#fff',fontWeight:'bold'}}>{user_name}</Text>
                 </Button>
             </Body>
         </Header>
         <Content>
-            <DrawerItems {...props} />
+            <DrawerItems {...props}/>
         </Content>
-
     </Container>
 
 );
