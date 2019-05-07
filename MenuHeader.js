@@ -1,13 +1,12 @@
-import {Body, Button, Header, Icon, Input, Item, Left, Right, Text,View} from "native-base";
+import {Body, Button, Header, Icon, Input, Item, Left, Right, Text, View} from "native-base";
 import {withNavigation} from 'react-navigation'
 import React, {Component} from "react";
 import {StyleSheet, TouchableHighlight} from "react-native";
-import {getCity} from "./AxiosRequest";
+import {getInfo} from "./AxiosRequest";
 import Menu from "./screens/Menu";
 
 
 class MenuHeader extends Component {
-
 
 
     constructor(props) {
@@ -20,21 +19,22 @@ class MenuHeader extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
     handleChange(e) {
         this.setState({
             ville: e.nativeEvent.text
         });
     }
+
     handleSubmit() {
-        getCity(this.state.ville) .then((res) => {
-            if(res === 'Not Found') {
+        getInfo('type',this.state.ville).then((res) => {
+            if (res === 'Not Found') {
                 this.setState({
                     error: 'ville inconnu'
                 });
-            }
-            else {
-                this.props.navigation.navigate('Menu',{
-                villeNom: res.nom
+            } else {
+                this.props.navigation.navigate('Menu', {
+                    villeNom: res.nom
                 });
                 this.setState({
                     error: false,
@@ -45,14 +45,11 @@ class MenuHeader extends Component {
     }
 
 
-
     toggleDrawer = () => {
 
         this.props.navigationProps.toggleDrawer();
 
     };
-
-
 
 
     render() {
@@ -64,24 +61,23 @@ class MenuHeader extends Component {
 
             <Header noShadow style={{backgroundColor: '#01b8aa'}}>
                 <Left>
-                    <Button transparent onPress={this.toggleDrawer.bind(this)}>
-                        <Icon name="menu" style={{fontSize: 38}}/>
-                    </Button>
+                    <TouchableHighlight>
+                        <Button transparent  onPress={this.toggleDrawer.bind(this)}>
+                            <Icon name="menu" style={{fontSize: 38}}/>
+                        </Button>
+                    </TouchableHighlight>
                 </Left>
-                <Body style={{position: 'absolute', textAlign: 'center',justifyContent: 'center'}}>
+                <Body style={{position: 'absolute', textAlign: 'center', justifyContent: 'center'}}>
 
-                <View style={{textAlign: 'center',justifyContent: 'center'}}>
-                    <Item style={{width: '50%', height: '30%', borderColor: 'transparent'}}>
-                        <Input placeholderTextColor="white" placeholder='   Rechercher une ville...'
-                               style={styles.villeInput}  onChange={this.handleChange} />
-                        <TouchableHighlight onPress = {this.handleSubmit}>
-                        <Icon active name='swap' />
-                        </TouchableHighlight>
-                    </Item>
-                </View>
-
-
-
+                    <View style={{textAlign: 'center', justifyContent: 'center'}}>
+                        <Item style={{width: '50%', height: '30%', borderColor: 'transparent'}}>
+                            <Input placeholderTextColor="white" placeholder='   Rechercher une ville...'
+                                   style={styles.villeInput} onChange={this.handleChange}/>
+                            <TouchableHighlight onPress={this.handleSubmit}>
+                                <Icon active name='swap'/>
+                            </TouchableHighlight>
+                        </Item>
+                    </View>
 
 
                 </Body>

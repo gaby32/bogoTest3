@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
 import {Container, Input, Text, View} from "native-base";
-import {Navigation} from 'react-native-navigation';
+
 
 export default class Menu extends Component {
-
-
-
 
 
 
