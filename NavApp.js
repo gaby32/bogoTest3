@@ -3,12 +3,12 @@ import Menu from "./screens/Menu";
 import Profil from "./screens/Profil";
 import Report from "./screens/Report";
 import React from "react";
-import { Navigation } from 'react-native-navigation';
+import {Navigation} from 'react-native-navigation';
 import MenuHeader from "./MenuHeader";
-import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
+import {gestureHandlerRootHOC} from 'react-native-gesture-handler'
 import {Cdrawer} from "./Cdrawer";
 import BackHeader from "./BackHeader";
-
+import Evenement from "./screens/Evenements"
 
 export function registerScreens() {
     Navigation.registerComponent('screens.Menu', () =>
@@ -69,6 +69,22 @@ const ReportStack = createStackNavigator({
 
     );
 
+const EvenementStack = createStackNavigator({
+
+        Report: {
+            screen: Evenement,
+            navigationOptions: ({navigation}) => ({
+                header: <BackHeader title="Liste des evenements" navigationProps={navigation}/>,
+
+            }),
+        },
+    },
+
+);
+
+
+
+
 
 const DrawerNavigator = createDrawerNavigator({
 
@@ -98,7 +114,15 @@ const DrawerNavigator = createDrawerNavigator({
 
     },
 
+        EvenementDraw: {
 
+            screen: EvenementStack,
+            navigationOptions: {
+                drawerLabel: 'Evenements',
+
+            },
+
+        },
 
 },
     {
@@ -107,7 +131,7 @@ const DrawerNavigator = createDrawerNavigator({
         contentOptions: {
             activeTintColor: '#01b8aa'
         }
-    }
+      }
     );
 const AppContainer = createAppContainer(DrawerNavigator);
 export default AppContainer;

@@ -1,6 +1,6 @@
 import React from "react";
-import {View} from 'react-native';
-import {Container,} from "native-base";
+import {View, Image, StyleSheet, Text} from 'react-native';
+import {Button, Container, Icon} from "native-base";
 
 
 export default class Profil extends React.Component {
@@ -9,28 +9,60 @@ export default class Profil extends React.Component {
         return (
             <Container>
 
-                <View style={{flex: 1, flexDirection: 'row'}}>
 
-                    {/* Flex box -> En haut a gauche + en dessous */}
-                    <View style={{flex: 1, flexDirection: 'column'}}>
-                        {/* Flex box -> En haut */}
-                        <View style={{width: '100%', height: '50%', backgroundColor: 'steelblue'}}/>
-                        {/* Flex box -> En bas */}
-                        <View style={{width: '100%', height: '50%', backgroundColor: 'skyblue'}}/>
+                <View style={{flex: 1, flexDirection: 'column', justifyContent: 'flex-end'}}>
+                    {/* Flex box -> En haut */}
+
+                    <View style={{
+                        width: '100%',
+                        height: '50%',
+                        backgroundColor: 'steelblue',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}>
+
+                        <Image
+                            style={styles.profileimg}
+                            source={require('./fatguy.jpg')}
+                            height='100%'
+                            width='30%'
+                        />
+
                     </View>
+                    {/* Flex box -> En bas */}
+                    <View style={{width: '100%', height: '50%', backgroundColor: 'skyblue'}}>
+
+                        <Text style={{fontSize:22,fontFamily:'roboto'}}>
+                            Nom
+                        </Text>
+
+                        <Text style={{fontSize:22,fontFamily:'roboto'}}>
+                            Courriel
+                        </Text>
 
 
-                    {/* Flex box -> A droite des deux precedentes */}
-                    <View style={{width: '50%', height: '100%', backgroundColor: 'powderblue'}}/>
 
+
+                    </View>
                 </View>
+
 
                 {/* Flex box -> Les deux box du bas */}
                 <View style={{flex: 1, flexDirection: 'column', justifyContent: 'flex-end'}}>
                     {/* Flex box -> En haut */}
-                    <View style={{width: '100%', height: '50%', backgroundColor: 'steelblue'}}/>
+                    <View style={{width: '100%', height: '50%', backgroundColor: 'steelblue'}}>
+
+                        <Text style={{fontSize:24,fontFamily:'roboto', fontWeight:'bold' }}>
+                            Statut du dernier signalement:
+                        </Text>
+
+
+                    </View>
                     {/* Flex box -> En bas */}
-                    <View style={{width: '100%', height: '50%', backgroundColor: 'skyblue'}}/>
+                    <View style={{width: '100%', height: '50%', backgroundColor: 'skyblue'}}>
+
+
+                    </View>
                 </View>
 
             </Container>
@@ -38,3 +70,15 @@ export default class Profil extends React.Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+
+    profileimg: {
+        width: '75%',
+        height: '75%',
+        borderRadius: 30
+
+    }
+
+
+});
