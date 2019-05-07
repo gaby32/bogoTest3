@@ -1,6 +1,6 @@
 import React from "react";
-import {View, Image, StyleSheet, Text} from 'react-native';
-import {Button, Container, Icon} from "native-base";
+import {Image, StyleSheet, Text, View} from 'react-native';
+import {Container} from "native-base";
 
 
 export default class Profil extends React.Component {

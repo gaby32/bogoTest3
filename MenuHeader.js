@@ -1,9 +1,7 @@
-import {Body, Button, Header, Icon, Input, Item, Left, Right, Text,View} from "native-base";
+import {Body, Button, Header, Icon, Input, Item, Left, Right} from "native-base";
 import {withNavigation} from 'react-navigation'
 import React, {Component} from "react";
 import {StyleSheet, TouchableHighlight} from "react-native";
-import {getCity} from "./FetchDemo";
-import Menu from "./screens/Menu"
 
 class MenuHeader extends Component {
 
@@ -35,13 +33,7 @@ class MenuHeader extends Component {
 
                     </Item>
 
-                    <TouchableHighlight>
 
-
-                        <Text>
-                            SEARCH
-                        </Text>
-                    </TouchableHighlight>
                 </Body>
                 <Right>
 
