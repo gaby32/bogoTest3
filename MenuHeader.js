@@ -1,4 +1,4 @@
-import {Body, Button, Header, Icon, Input, Item, Left, Right, Text, View} from "native-base";
+import {Body, Button, Header, Icon, Input, Item, Left, Right, View} from "native-base";
 import {withNavigation} from 'react-navigation'
 import React, {Component} from "react";
 import {StyleSheet, TouchableHighlight} from "react-native";
@@ -27,7 +27,7 @@ class MenuHeader extends Component {
     }
 
     handleSubmit() {
-        getInfo('type',this.state.ville).then((res) => {
+        getInfo('region',this.state.ville).then((res) => {
             if (res === 'Not Found') {
                 this.setState({
                     error: 'ville inconnu'
@@ -67,14 +67,14 @@ class MenuHeader extends Component {
                         </Button>
                     </TouchableHighlight>
                 </Left>
-                <Body style={{position: 'absolute', textAlign: 'center', justifyContent: 'center'}}>
+                <Body style={{position: 'absolute',  justifyContent: 'center',}}>
 
-                    <View style={{textAlign: 'center', justifyContent: 'center'}}>
-                        <Item style={{width: '50%', height: '30%', borderColor: 'transparent'}}>
-                            <Input placeholderTextColor="white" placeholder='   Rechercher une ville...'
+                    <View style={{ justifyContent: 'center'}}>
+                        <Item rounded style={{width: '50%', height: '30%', borderColor: 'transparent'}}>
+                            <Input placeholderTextColor="white" placeholder='Rechercher une ville...'
                                    style={styles.villeInput} onChange={this.handleChange}/>
                             <TouchableHighlight onPress={this.handleSubmit}>
-                                <Icon active name='swap'/>
+                                <Icon active name='search'/>
                             </TouchableHighlight>
                         </Item>
                     </View>
