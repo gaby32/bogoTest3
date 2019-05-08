@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, List, ListItem, Text, Left, Right, Icon, Separator } from 'native-base';
+import {Container, Header, Content, List, ListItem, Text, Left, Right, Icon, Separator, View, Title} from 'native-base';
 import {getAllInfo} from "../AxiosRequest";
+
 
 export default class ListSeparatorExample extends Component {
     constructor(props) {
@@ -41,29 +42,28 @@ export default class ListSeparatorExample extends Component {
         return (
             <Container>
                 <Content>
-                    <Separator bordered>
-                        <Text>MIDFIELD</Text>
-                    </Separator>
                     <List>
                         {!isLoading ? (
                             listItems.map(event => {
                                 const { nom, date, adresse} = event;
                                 return (
+                                    <View>
+                                        <Separator bordered>
+                                            <Text  style={{textAlign: 'center', fontWeight: 'bold',fontSize: 20,}}>{nom}</Text>
+                                        </Separator>
                                     <ListItem>
                                         <Left>
-                                            <Text>{nom}</Text>
-                                        </Left>
-                                        <Right>
                                             <Text>
                                                 {date}
                                             </Text>
+                                        </Left>
+                                        <Right>
+                                            <Text>
+                                                {adresse}
+                                            </Text>
                                         </Right>
-                                        <Separator />
-                                        <Text>
-                                            {adresse}
-                                        </Text>
-
                                     </ListItem>
+                                    </View>
                                 );
                             })
                         ) : (
