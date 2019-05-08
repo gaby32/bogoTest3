@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Container, Header, Content, List, ListItem, Text, Left, Right, Icon, Separator, View, Title} from 'native-base';
 import {getAllInfo} from "../AxiosRequest";
-import {responsiveFontSize} from "../Responsivator";
 
 
 export default class ListSeparatorExample extends Component {
