@@ -4,6 +4,7 @@ import React, {Component} from "react";
 import {StyleSheet, TouchableHighlight} from "react-native";
 import {getInfo} from "./AxiosRequest";
 import Menu from "./screens/Menu";
+import {responsiveFontSize, responsiveHeight, responsiveWidth} from "./Responsivator";
 
 
 class MenuHeader extends Component {
@@ -14,6 +15,7 @@ class MenuHeader extends Component {
         this.state = {
             ville: '',
             error: false,
+
 
         };
         this.handleChange = this.handleChange.bind(this);
@@ -27,15 +29,22 @@ class MenuHeader extends Component {
     }
 
     handleSubmit() {
-        getInfo('region',this.state.ville).then((res) => {
+        getInfo('ville', this.state.ville).then((res) => {
             if (res === 'Not Found') {
                 this.setState({
                     error: 'ville inconnu'
                 });
             } else {
+
+                    getInfo('region',res.id_region).then((res2)=>{
+
+
                 this.props.navigation.navigate('Menu', {
-                    villeNom: res.nom
+                    villeNom: res.nom,
+                    regionNom: res2.nom
+
                 });
+                    });
                 this.setState({
                     error: false,
                     ville: ''
@@ -54,27 +63,27 @@ class MenuHeader extends Component {
 
     render() {
 
-
+//
         const {navigate} = this.props.navigation;
         return (
 
 
             <Header noShadow style={{backgroundColor: '#01b8aa'}}>
                 <Left>
-                    <TouchableHighlight>
-                        <Button transparent  onPress={this.toggleDrawer.bind(this)}>
-                            <Icon name="menu" style={{fontSize: 38}}/>
-                        </Button>
+                    <TouchableHighlight onPress={this.toggleDrawer.bind(this)}>
+
+                            <Icon name="menu" style={{fontSize: responsiveFontSize(5),color:'#fff'}}/>
+
                     </TouchableHighlight>
                 </Left>
-                <Body style={{position: 'absolute',  justifyContent: 'center',}}>
+                <Body style={{position: 'absolute', justifyContent: 'center',}}>
 
-                    <View style={{ justifyContent: 'center'}}>
-                        <Item rounded style={{width: '50%', height: '30%', borderColor: 'transparent'}}>
-                            <Input placeholderTextColor="white" placeholder='Rechercher une ville...'
-                                   style={styles.villeInput} onChange={this.handleChange}/>
-                            <TouchableHighlight onPress={this.handleSubmit}>
-                                <Icon active name='search'/>
+                    <View style={{justifyContent: 'center',width: responsiveWidth(60), height: responsiveHeight(30)}}>
+                        <Item rounded >
+                            <Input   style={styles.searchInput} placeholderTextColor="white" placeholder='Rechercher une ville...'
+                                    onChange={this.handleChange}/>
+                            <TouchableHighlight onPress={this.handleSubmit} >
+                                <Icon style={{color: '#fff'}}  name='search'/>
                             </TouchableHighlight>
                         </Item>
                     </View>
@@ -82,11 +91,10 @@ class MenuHeader extends Component {
 
                 </Body>
                 <Right>
+                    <TouchableHighlight onPress={() => navigate("Profil")}>
+                        <Icon name="person" style={{fontSize: responsiveFontSize(5), color:'#fff'}}/>
 
-                    <Button transparent onPress={() => navigate("Profil")}>
-                        <Icon name="person" style={{fontSize: 38}}/>
-                    </Button>
-
+                    </TouchableHighlight>
                 </Right>
 
 
@@ -97,15 +105,11 @@ class MenuHeader extends Component {
 }
 
 const styles = StyleSheet.create({
-
-    villeInput: {
-        color: "#fff",
+    searchInput:{
+        fontSize: responsiveFontSize(2),
         fontFamily: 'roboto',
-        fontSize: 13, borderWidth: 2,
-        borderColor: 'white',
-        borderRadius: 20,
-        justifyContent: 'center',
-        alignItems: 'center'
+        color: '#fff'
+
     }
 
 

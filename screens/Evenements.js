@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {Container, Header, Content, List, ListItem, Text, Left, Right, Icon, Separator, View, Title} from 'native-base';
+import React, {Component} from 'react';
+import {Container, Content, Left, List, ListItem, Right, Separator, Text, View} from 'native-base';
 import {getAllInfo} from "../AxiosRequest";
 
 
@@ -9,20 +9,20 @@ export default class ListSeparatorExample extends Component {
     }
 
     state = {
-        listItems:[],
+        listItems: [],
         isLoading: true,
     };
 
-    componentDidMount(){
+    componentDidMount() {
         getAllInfo('evenement')
 
-    .then(response =>
-            response.map(event => ({
-                nom: `${event.nom}`,
-                date: `${event.date}`,
-                adresse: `${event.adresse}`,
-            }))
-        )
+            .then(response =>
+                response.map(event => ({
+                    nom: `${event.nom}`,
+                    date: `${event.date}`,
+                    adresse: `${event.adresse}`,
+                }))
+            )
             .then(listItems => {
                 this.setState({
                     listItems,
@@ -30,13 +30,12 @@ export default class ListSeparatorExample extends Component {
                 });
             })
 
-            .catch(error => this.setState({ error, isLoading: false }));
+            .catch(error => this.setState({error, isLoading: false}));
     }
 
 
-
     render() {
-        const { isLoading, listItems } = this.state;
+        const {isLoading, listItems} = this.state;
 
 
         return (
@@ -45,24 +44,28 @@ export default class ListSeparatorExample extends Component {
                     <List>
                         {!isLoading ? (
                             listItems.map(event => {
-                                const { nom, date, adresse} = event;
+                                const {nom, date, adresse} = event;
                                 return (
                                     <View>
                                         <Separator bordered>
-                                            <Text  style={{textAlign: 'center', fontWeight: 'bold',fontSize: 20,}}>{nom}</Text>
+                                            <Text style={{
+                                                textAlign: 'center',
+                                                fontWeight: 'bold',
+                                                fontSize: 20,
+                                            }}>{nom}</Text>
                                         </Separator>
-                                    <ListItem>
-                                        <Left>
-                                            <Text>
-                                                {date}
-                                            </Text>
-                                        </Left>
-                                        <Right>
-                                            <Text>
-                                                {adresse}
-                                            </Text>
-                                        </Right>
-                                    </ListItem>
+                                        <ListItem>
+                                            <Left>
+                                                <Text>
+                                                    {date}
+                                                </Text>
+                                            </Left>
+                                            <Right>
+                                                <Text>
+                                                    {adresse}
+                                                </Text>
+                                            </Right>
+                                        </ListItem>
                                     </View>
                                 );
                             })

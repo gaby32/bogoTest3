@@ -9,6 +9,7 @@ import {gestureHandlerRootHOC} from 'react-native-gesture-handler'
 import {Cdrawer} from "./Cdrawer";
 import BackHeader from "./BackHeader";
 import Evenement from "./screens/Evenements"
+import VilleInRegion from "./screens/VilleInRegion";
 
 export function registerScreens() {
     Navigation.registerComponent('screens.Menu', () =>
@@ -17,6 +18,8 @@ export function registerScreens() {
         gestureHandlerRootHOC(Profil));
     Navigation.registerComponent('screens.Report', () =>
         gestureHandlerRootHOC(Report));
+    Navigation.registerComponent('screens.VilleInRegion',() =>
+    gestureHandlerRootHOC(VilleInRegion));
 }
 
 registerScreens();
@@ -82,6 +85,19 @@ const EvenementStack = createStackNavigator({
 
 );
 
+const VilleRegionStack = createStackNavigator({
+
+        VilleInRegion: {
+            screen: VilleInRegion,
+            navigationOptions: ({navigation}) => ({
+                header: <BackHeader title="Ville dans la region" navigationProps={navigation}/>,
+
+            }),
+        },
+    },
+
+);
+
 
 
 
@@ -123,6 +139,12 @@ const DrawerNavigator = createDrawerNavigator({
             },
 
         },
+    VilleDraw: {
+        screen: VilleRegionStack,
+        navigationOptions:{
+            drawerLabel: 'Ville dans la region',
+        },
+    },
 
 },
     {
